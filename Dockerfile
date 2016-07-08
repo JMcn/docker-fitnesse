@@ -1,7 +1,7 @@
 #
 #
 
-FROM FROM maven:3.2-jdk-7-onbuild
+FROM centos:latest
 MAINTAINER Ruggero Marchei <ruggero.marchei@daemonzone.net>
 
 
