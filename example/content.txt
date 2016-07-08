@@ -1,0 +1,21 @@
+!***< Hidden
+
+!define TEST_SYSTEM {slim}
+!path ${TEST_PATH}\*.jar
+!define COLLAPSE_SETUP {true}
+!define COLLAPSE_TEARDOWN {true}
+!| import             |
+|com.otaykalo.fitnesse|
+
+*!
+
+
+!|Sum Calculator   |
+|first|second|sum? |
+|1    |2     |3    |
+|5    |5     |10   |
+|3    |3     |<7   |
+|6    |3     |>8   |
+|5    |2     |6<_<8|
+|1    |1     |2    |
+
