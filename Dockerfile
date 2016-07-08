@@ -1,7 +1,7 @@
 #
 #
 
-FROM centos:latest
+FROM FROM maven:3.2-jdk-7-onbuild
 MAINTAINER Ruggero Marchei <ruggero.marchei@daemonzone.net>
 
 
@@ -21,7 +21,14 @@ RUN yum install -y java-1.8.0-openjdk-headless unzip \
 	  && yum clean all -q
 
 
+RUN curl -fsSL -o /etc/yum.repos.d/epel-apache-maven.repo http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo \
+      && sed -i s/\$releasever/6/g /etc/yum.repos.d/epel-apache-maven.repo \
+      && yum install -y apache-maven
+
+
 ENV FITNESSE_RELEASE 20151230
+ENV JAVA_HOME /etc/alternatives/java_sdk
+
 
 RUN mkdir -p /opt/fitnesse/FitNesseRoot \
     && curl -fsSL -o /opt/fitnesse/fitnesse-standalone.jar "http://www.fitnesse.org/fitnesse-standalone.jar?responder=releaseDownload&release=$FITNESSE_RELEASE" \
