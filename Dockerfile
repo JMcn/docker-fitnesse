@@ -45,3 +45,9 @@ WORKDIR /opt/fitnesse
 RUN java -jar /opt/fitnesse/fitnesse-standalone.jar -i
 
 #ENTRYPOINT ["/docker-entrypoint.sh"]
+
+#docker run -ti -v $(pwd)/example:/opt/fitnesse/FitNesseRoot/FitNesse/ex  -v $(pwd)/dummyTest/target:/opt/fitnesse/testFiles --env TEST_PATH=/opt/fitnesse/testFiles/ otaykalo/dofit:v1 /bin/bash
+
+#[root@f0d3e58c5b43 fitnesse]# ./docker-entrypoint.sh -d /opt/fitnesse/ -c "FitNesse.ex?test&format=text"
+
+#vagrant@vagrant-VirtualBox:~/docker-fitnesse$ docker run -ti -v $(pwd)/example:/opt/fitnesse/FitNesseRoot/FitNesse/ex  -v $(pwd)/dummyTest:/opt/fitnesse/testFiles --env TEST_PATH=/opt/fitnesse/testFiles/target otaykalo/dofit:v2 /bin/bash

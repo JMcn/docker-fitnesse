@@ -1,7 +1,7 @@
 !***< Hidden
 
 !define TEST_SYSTEM {slim}
-!path ${TEST_PATH}\*.jar
+!path ${TEST_PATH}/*.jar
 !define COLLAPSE_SETUP {true}
 !define COLLAPSE_TEARDOWN {true}
 !| import             |
