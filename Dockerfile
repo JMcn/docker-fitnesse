@@ -42,9 +42,18 @@ EXPOSE 80
 
 WORKDIR /opt/fitnesse
 
-RUN java -jar /opt/fitnesse/fitnesse-standalone.jar -i
+RUN   mvn -B archetype:generate \
+      -DarchetypeGroupId=org.apache.maven.archetypes \
+      -DgroupId=com.mycompany.app \
+      -DartifactId=my-app
+RUN cd my-app && mvn package && cd .. && rm -fr my-app
 
-#ENTRYPOINT ["/docker-entrypoint.sh"]
+
+RUN java -jar /opt/fitnesse/fitnesse-standalone.jar -i -d /opt/fitnesse
+
+RUN touch /opt/fitnesse/plugins.properties
+
+ENTRYPOINT ["/docker-entrypoint.sh"]
 
 #docker run -ti -v $(pwd)/example:/opt/fitnesse/FitNesseRoot/FitNesse/ex  -v $(pwd)/dummyTest/target:/opt/fitnesse/testFiles --env TEST_PATH=/opt/fitnesse/testFiles/ otaykalo/dofit:v1 /bin/bash
 
